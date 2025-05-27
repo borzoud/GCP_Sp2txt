@@ -133,7 +133,7 @@ This involves actions on your local computer and within VS Code.
 
     - **In the VS Code terminal:**  
       - **macOS/Linux:** `echo $GOOGLE_APPLICATION_CREDENTIALS`  
-      - **Windows:** `echo %GOOGLE_APPLICATION_CREDENTIALS%`  
+      - **Windows:** `$env:GOOGLE_APPLICATION_CREDENTIALS`  
       - This should print the path to your JSON key file if the environment variable is set correctly for the current session.
 
 Now, your VS Code environment should be able to find your Google Cloud service account credentials, allowing you to authenticate and use Google Cloud models in your projects. Remember to keep your JSON key file secure and avoid sharing it publicly.
