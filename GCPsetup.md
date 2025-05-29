@@ -137,3 +137,47 @@ This involves actions on your local computer and within VS Code.
       - This should print the path to your JSON key file if the environment variable is set correctly for the current session.
 
 Now, your VS Code environment should be able to find your Google Cloud service account credentials, allowing you to authenticate and use Google Cloud models in your projects. Remember to keep your JSON key file secure and avoid sharing it publicly.
+
+# Google cloud setup, step-by-step guide
+
+###
+#### Creating an account
+
+1. login to <a href="http://console.cloud.google.com/">console.cloud.google.com</a>
+2. If it's for first time, click on start free and it will ask for payment methods. Otherwise, create a new project.
+<img src="Images/1.png">
+    - The payments methods can be found under **Billing** (by opening the left menu bar with three lines), where on the left menu **Payment method** can be found for later adjustment. Alternativelty just search payment methods on top.
+
+#### Creating a service account
+
+3. Click on the left menu bar, and select <u>IAM & Admin</u> and then <u>Service Accounts</u>. Then create a new service account.
+<img src="Images/2.png">
+
+    
+4. Once created, click on three dots under **Actions**, and go to Manage keys
+5. Click on **Add key** and create a new one and select JSON as a type and save it somewhere safe for later use.
+<img src="Images/3.png">
+
+#### Creating a bucket (for storage)
+6. On the left menu click on **Cloud Storage** and then **Buckets** or just search buckets on the top search bar. Click on create bucket
+<img src="Images/4.png">
+
+7. Following configurations are recommended:
+Location type: Multi-region
+Default storage class: Standard
+Hierarchical namespace: Disabled
+Public access prevention: On
+Access control: Uniform
+Data protection: Soft delete or Object versioning
+
+
+8. Preferably create a following structure for later convenience: /spch2txt/AudioInput. To do so just click on three dots under Folder Browser. You can upload your files here.
+
+#### Activating speech to text API
+9. On the top search bar find speech, and when it is opened click on enable
+<img src=Images/5.png>
+
+10. Then click on recognizer tab, and then create.
+11. Choose a name of your choice. Region for chirp2 should are limited to us, asia and europe, which in this case europe-west4 is selected but can be changed later. Leave the rest unchecked, except word time offsets and confidence which can be checked if you desire.
+
+#### Setup of the API on personal computer
