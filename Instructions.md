@@ -31,6 +31,6 @@ ffmpeg -i file.m4a -ar 16000 -ac 1 -c:a pcm_s16le output.wav
 2. Update the `FILE_NAME` variable to match the actual audio file name.
 3. Click **Run All** at the top of the window.
 4. A corresponding text file will be generated in the same folder, named after the audio file (e.g., `Session1.docx`).
-
+y
 
 
