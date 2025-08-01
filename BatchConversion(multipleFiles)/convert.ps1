@@ -1,16 +1,24 @@
-# Define log file
-$logFile = "conversion_log.txt"
-Set-Content -Path $logFile -Value "Failed Conversions and Missing Files:`n"  # Initialize log file
 
-# Saves all file names with index
-$i=1
-ls | Where-Object {$_.Name -match '\.(m4a|mp3)$'}|
-	Select-Object -ExpandProperty Name | 
-		ForEach-Object {"$i-$_" 
-		$i++ 
-	} > output.txt
+# Step 1: Save detailed file list
+$i = 1
+Get-ChildItem -File | 
+    Where-Object { $_.Name -match '\.(mp3|m4a)$' } | 
+    ForEach-Object {
+        "$i-$($_.Name) (Size: $($_.Length) bytes, Modified: $($_.LastWriteTime))"
+        $i++
+    } > output.txt
 
-# Loop through files S (1) to S (100)
+# Step 2: Rename files to "S (1).ext" format
+$i = 1
+Get-ChildItem -File | 
+    Where-Object { $_.Name -match '\.(mp3|m4a)$' } | 
+    ForEach-Object {
+        $newName = "S ($i)$($_.Extension)"
+        Rename-Item -LiteralPath $_.FullName -NewName $newName -ErrorAction SilentlyContinue
+        $i++
+    }
+
+# Step 3: Loop through files S (1) to S (100)
 for ($i = 1; $i -le 100; $i++) {
     $formats = @("m4a", "mp3")
     $foundMain = $false
