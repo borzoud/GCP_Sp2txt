@@ -15,4 +15,5 @@ etils
 jiwer
 plotly
 pydub
+python-docx
 
